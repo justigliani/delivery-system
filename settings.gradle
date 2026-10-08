@@ -1,0 +1,6 @@
+rootProject.name = 'delivery-system'
+
+include 'eureka-server'
+include 'payment-service'
+include 'order-service'
+include 'review-service'
