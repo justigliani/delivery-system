@@ -30,6 +30,11 @@ public class GlobalExceptionHandler {
         return error(HttpStatus.CONFLICT, ex.getMessage());
     }
 
+    @ExceptionHandler(PaymentProcessingException.class)
+    public ResponseEntity<ErrorResponse> handlePayment(PaymentProcessingException ex) {
+        return error(HttpStatus.BAD_GATEWAY, ex.getMessage());
+    }
+
     private ResponseEntity<ErrorResponse> error(HttpStatus status, String message) {
         return ResponseEntity.status(status).body(new ErrorResponse(message));
     }
