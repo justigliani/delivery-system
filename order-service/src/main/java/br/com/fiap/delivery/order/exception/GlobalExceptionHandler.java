@@ -35,6 +35,11 @@ public class GlobalExceptionHandler {
         return error(HttpStatus.BAD_GATEWAY, ex.getMessage());
     }
 
+    @ExceptionHandler(AssistantUnavailableException.class)
+    public ResponseEntity<ErrorResponse> handleAssistant(AssistantUnavailableException ex) {
+        return error(HttpStatus.BAD_GATEWAY, ex.getMessage());
+    }
+
     private ResponseEntity<ErrorResponse> error(HttpStatus status, String message) {
         return ResponseEntity.status(status).body(new ErrorResponse(message));
     }
