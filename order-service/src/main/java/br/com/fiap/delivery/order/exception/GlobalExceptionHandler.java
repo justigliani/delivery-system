@@ -30,6 +30,11 @@ public class GlobalExceptionHandler {
         return error(HttpStatus.CONFLICT, ex.getMessage());
     }
 
+    @ExceptionHandler(TooManyRequestsException.class)
+    public ResponseEntity<ErrorResponse> handleTooManyRequests(TooManyRequestsException ex) {
+        return error(HttpStatus.TOO_MANY_REQUESTS, ex.getMessage());
+    }
+
     @ExceptionHandler(PaymentProcessingException.class)
     public ResponseEntity<ErrorResponse> handlePayment(PaymentProcessingException ex) {
         return error(HttpStatus.BAD_GATEWAY, ex.getMessage());
